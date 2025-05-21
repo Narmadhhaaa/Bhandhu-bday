@@ -340,8 +340,10 @@
 
   function addBalloons() {
     createBalloons(15);
-    const btnCake = createButton('btnCake', "Add a birthday cake 🎂", addCake);
-    switchButton(currentButton, btnCake);
+    //const btnCake = createButton('btnCake', "Add a birthday cake 🎂", addCake);
+    //switchButton(currentButton, btnCake);
+    const btnVideo = createButton('btnVideo', "Watch a special video 🎥", showVideo);
+    switchButton(currentButton, btnVideo);
   }
 
   function addCake() {
@@ -352,8 +354,8 @@
       cake.className = 'cake';
       document.body.insertBefore(cake, buttonsContainer);
     }
-    const btnVideo = createButton('btnVideo', "Watch a special video 🎥", showVideo);
-    switchButton(currentButton, btnVideo);
+    //const btnVideo = createButton('btnVideo', "Watch a special video 🎥", showVideo);
+    //switchButton(currentButton, btnVideo);
   }
 
   function showVideo() {
