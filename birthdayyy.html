@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Happy 22nd Birthday Bhandavya!</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+
+  body {
+    font-family: 'Baloo 2', cursive;
+    margin: 0;
+    background: #fce4ec;
+    overflow-x: hidden;
+    text-align: center;
+    color: #d81b60;
+    position: relative;
+    min-height: 100vh;
+    padding: 20px 10px 80px; /* bottom padding so buttons don’t get cut off */
+  }
+
+  h1 {
+    margin-top: 30px;
+    font-size: 2.8rem;
+  }
+
+  /* Buttons container fixed at bottom center */
+  .buttons-container {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 320px;
+    height: 60px;
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn {
+    background: #ec407a;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 14px 28px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 4px 8px rgba(236, 64, 122, 0.3);
+    transition: opacity 0.5s ease;
+    opacity: 1;
+    min-width: 280px;
+  }
+
+  .btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Hanging hearts container */
+  .hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  /* Actual heart shape using ::before and ::after */
+  .heart {
+    position: relative;
+    width: 25px;
+    height: 22px;
+    background: #f48fb1;
+    transform: rotate(-45deg);
+    animation: swing 3s ease-in-out infinite;
+    margin-top: 10px;
+  }
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 22px;
+    background: #f48fb1;
+    border-radius: 50%;
+  }
+  .heart::before {
+    top: -12px;
+    left: 0;
+  }
+  .heart::after {
+    top: 0;
+    right: -12px;
+  }
+
+  /* Different swing delays for each heart */
+  .heart:nth-child(1) { animation-delay: 0s; }
+  .heart:nth-child(2) { animation-delay: 0.5s; }
+  .heart:nth-child(3) { animation-delay: 1s; }
+  .heart:nth-child(4) { animation-delay: 1.5s; }
+  .heart:nth-child(5) { animation-delay: 2s; }
+ 
+  @keyframes swing {
+    0%, 100% { transform: rotate(-45deg); }
+    50% { transform: rotate(-35deg); }
+  }
+
+  /* Cake image styling */
+  .cake {
+    display: block;
+    margin: 40px auto 30px;
+    max-width: 200px;
+    filter: drop-shadow(0 4px 5px rgba(0,0,0,0.2));
+    border-radius: 20px;
+  }
+
+  /* Video container styling */
+  .video-container {
+    margin: 40px auto;
+    max-width: 560px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(216, 27, 96, 0.6);
+  }
+
+  /* Balloon styling - better shape & shading */
+  .balloon {
+    position: fixed;
+    bottom: -100px;
+    width: 45px;
+    height: 65px;
+    background: radial-gradient(circle at 40% 30%, #f48fb1, #d81b60);
+    border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+    opacity: 0.95;
+    animation: floatUp linear forwards;
+    z-index: 50;
+    box-shadow:
+      inset -5px -8px 12px rgba(255 255 255 / 0.5),
+      0 3px 5px rgba(216, 27, 96, 0.6);
+  }
+  .balloon::before {
+    content: "";
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    width: 3px;
+    height: 22px;
+    background: #d81b60;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(216, 27, 96, 0.8);
+  }
+  .balloon::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    width: 10px;
+    height: 7px;
+    background: #d81b60;
+    border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+    transform: translateX(-50%) rotate(15deg);
+    box-shadow: inset 2px 1px 4px rgba(255 255 255 / 0.6);
+  }
+
+  /* Different balloon colors */
+  .balloon:nth-child(odd) {
+    background: radial-gradient(circle at 40% 30%, #ce93d8, #7b1fa2);
+    box-shadow:
+      inset -5px -8px 12px rgba(255 255 255 / 0.5),
+      0 3px 5px rgba(123, 31, 162, 0.6);
+  }
+  .balloon:nth-child(even) {
+    background: radial-gradient(circle at 40% 30%, #f48fb1, #d81b60);
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0) translateX(0);
+      opacity: 0.95;
+    }
+    100% {
+      transform: translateY(-120vh) translateX(20px);
+      opacity: 0;
+    }
+  }
+
+  /* Pink heart confetti styling */
+  .heart-confetti {
+    position: fixed;
+    width: 14px;
+    height: 12px;
+    background: #f48fb1;
+    transform: rotate(-45deg);
+    opacity: 0.9;
+    z-index: 80;
+    border-radius: 0;
+  }
+  .heart-confetti::before,
+  .heart-confetti::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 12px;
+    background: #f48fb1;
+    border-radius: 50%;
+  }
+  .heart-confetti::before {
+    top: -6px;
+    left: 0;
+  }
+  .heart-confetti::after {
+    top: 0;
+    right: -6px;
+  }
+
+  /* Make hearts float continuously with different speeds */
+  .floating-heart {
+    animation-name: heart-float;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+ @keyframes heart-float {
+  0% { transform: translateY(110vh) rotate(0deg); opacity: 0.9; }
+  100% { transform: translateY(0) rotate(360deg); opacity: 0.1; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Hanging hearts -->
+<div class="hearts-container">
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <div class="heart"></div>
+</div>
+
+<h1>🎉 Happy 22nd Birthday Bhandavya! 🎂</h1>
+
+<div class="buttons-container">
+  <button id="btnMusic" class="btn">🎵 Some music?</button>
+</div>
+
+<!-- Audio -->
+<audio id="birthdayMusic" src="Song.mp3" preload="auto"></audio>
+
+
+
+<script>
+  const buttonsContainer = document.querySelector('.buttons-container');
+  const audio = document.getElementById('birthdayMusic');
+  let currentButton = document.getElementById('btnMusic');
+
+  // Switch button helper
+  function switchButton(oldBtn, newBtn) {
+    oldBtn.classList.add('hidden');
+    oldBtn.disabled = true;
+    setTimeout(() => {
+      buttonsContainer.removeChild(oldBtn);
+      if(newBtn) {
+        buttonsContainer.appendChild(newBtn);
+        setTimeout(() => {
+          newBtn.classList.remove('hidden');
+          newBtn.disabled = false;
+        }, 50);
+      }
+      currentButton = newBtn || null;
+    }, 500);
+  }
+
+  // Create button factory
+  function createButton(id, text, onClick) {
+    const btn = document.createElement('button');
+    btn.id = id;
+    btn.className = 'btn hidden';
+    btn.textContent = text;
+    btn.addEventListener('click', onClick);
+    return btn;
+  }
+
+  // Create pink heart confetti decorations that float continuously and stay
+  function createConfetti(amount) {
+    for (let i = 0; i < amount; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'heart-confetti floating-heart';
+      confetti.style.top = `${Math.random() * 90 + 10}vh`;
+      confetti.style.left = `${Math.random() * 100}vw`;
+      // Randomize animation duration for variety (4-7s)
+      confetti.style.animationDuration = `${4 + Math.random() * 3}s`;
+      // Delay animation start for stagger
+      confetti.style.animationDelay = `${Math.random() * 5}s`;
+      document.body.appendChild(confetti);
+    }
+  }
+
+  // Create balloons that float continuously and stay on screen
+  function createBalloons(amount) {
+    for (let i = 0; i < amount; i++) {
+      const balloon = document.createElement('div');
+      balloon.className = 'balloon';
+      balloon.style.left = `${Math.random() * 90 + 5}vw`;
+      balloon.style.animationDuration = `${8 + Math.random() * 6}s`;
+      balloon.style.animationDelay = `${Math.random() * 4}s`;
+      document.body.appendChild(balloon);
+
+      // Restart animation infinitely to keep floating effect
+      balloon.addEventListener('animationend', () => {
+        balloon.style.animation = 'none';
+        balloon.offsetHeight; // trigger reflow
+        balloon.style.animation = null;
+      });
+    }
+  }
+
+  // Button click handlers with button switching
+  currentButton.addEventListener('click', () => {
+  audio.currentTime = 20; // ⬅ Start music from 20 seconds
+  audio.play();
+  const btnDecor = createButton('btnDecor', "It's your special day, let's add some decorations 🎉", addDecorations);
+  switchButton(currentButton, btnDecor);
+});
+
+
+  function addDecorations() {
+    createConfetti(30);
+    const btnBalloons = createButton('btnBalloons', "Let's add some balloons 🎈", addBalloons);
+    switchButton(currentButton, btnBalloons);
+  }
+
+  function addBalloons() {
+    createBalloons(15);
+    const btnCake = createButton('btnCake', "Add a birthday cake 🎂", addCake);
+    switchButton(currentButton, btnCake);
+  }
+
+  function addCake() {
+    if (!document.querySelector('.cake')) {
+      const cake = document.createElement('img');
+      cake.src = 'Cake.png';
+      cake.alt = 'Birthday Cake';
+      cake.className = 'cake';
+      document.body.insertBefore(cake, buttonsContainer);
+    }
+    const btnVideo = createButton('btnVideo', "Watch a special video 🎥", showVideo);
+    switchButton(currentButton, btnVideo);
+  }
+
+  function showVideo() {
+  if (!document.querySelector('.video-container')) {
+    const videoDiv = document.createElement('div');
+    videoDiv.className = 'video-container';
+    videoDiv.innerHTML = `
+      <video id="birthdayVideo" width="560" height="315" controls>
+        <source src="Videoo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    `;
+    document.body.insertBefore(videoDiv, buttonsContainer);
+
+    // Lower audio volume when video starts
+    const video = videoDiv.querySelector('#birthdayVideo');
+    video.addEventListener('play', () => {
+      audio.volume = 0.2; // Lower music volume
+    });
+    video.addEventListener('pause', () => {
+      audio.volume = 1; // Restore volume when video is paused
+    });
+    video.addEventListener('ended', () => {
+      audio.volume = 1; // Restore volume after video ends
+      showBirthdayWish();
+    });
+  }
+  switchButton(currentButton, null); // remove button after video appears
+}
+function showBirthdayWish() {
+  const existingWish = document.getElementById('birthdayWish');
+  if (!existingWish) {
+    const wishDiv = document.createElement('div');
+    wishDiv.id = 'birthdayWish';
+    wishDiv.style.marginTop = '30px';
+    wishDiv.style.padding = '20px';
+    wishDiv.style.background = '#fce4ec';
+    wishDiv.style.borderRadius = '20px';
+    wishDiv.style.boxShadow = '0 4px 10px rgba(216, 27, 96, 0.3)';
+    wishDiv.style.maxWidth = '600px';
+    wishDiv.style.marginLeft = 'auto';
+    wishDiv.style.marginRight = 'auto';
+    wishDiv.style.fontSize = '1.2rem';
+    wishDiv.style.lineHeight = '1.6';
+    wishDiv.style.color = '#880e4f';
+    wishDiv.innerHTML = `
+      💖 <strong>Happy Golden Birthday, Bhandavya!</strong><br><br>
+      Just like SEVENTEEN's harmony, your presence lights up every room with love and laughter.<br>
+      May this special day bring you endless joy, sweet memories, and moments as golden as your age!<br>
+      Stay sparkly, stay strong, and always follow the rhythm of your heart. 🎶<br><br>
+      🥳 Here's to more Wonwoo-filled days and dreams that shine bright like a SEVENTEEN stage! 🌟
+    `;
+    document.body.insertBefore(wishDiv, buttonsContainer);
+  }
+}
+
+</script>
+
+
+</body>
+</html>
